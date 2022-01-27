@@ -6,6 +6,47 @@
   <script src="bundle.js" async></script>
 </head>
 <body>
+  Example 1:
+  <div data-controller="hello">
+    <input data-hello-target="name" type="text">
+    <button data-action="click->hello#greet">Greet</button>
+  </div>
+  <br><br>Example 2: Copy To Clipboard
+  <div data-controller="clipboard">
+    PIN: <input data-clipboard-target="source" type="text" value="1234" readonly>
+    <button data-action="clipboard#copy">Copy to Clipboard</button>
+  </div>
+  <br>More than once instance of the clipboard controller on the page
+  <div data-controller="clipboard">
+    PIN: <input data-clipboard-target="source" type="text" value="5678" readonly>
+    <button data-action="clipboard#copy">Copy to Clipboard</button>
+  </div>
+  <br>Use other HTML elements like link and textarea (instead of button and input)
+  <div data-controller="clipboard">
+    PIN: <textarea data-clipboard-target="source" readonly>3737</textarea>
+    <a href="#" data-action="clipboard#copy" class="clipboard-button">Copy to Clipboard</a>
+  </div>
+  <div data-controller="clipboard" data-clipboard-supported-class="clipboard--supported">
+    PIN: <input data-clipboard-target="source" type="text" value="1234" readonly>
+    <button data-action="clipboard#copy" class="clipboard-button">Copy to Clipboard</button>  
+  </div>
+  <br><br>Example 3: Slideshow Controller to Learn about State Management
+  <div data-controller="slideshow" data-slideshow-index-value="1">
+    <button data-action="slideshow#previous"> ← </button>
+    <button data-action="slideshow#next"> → </button>
+
+    <div data-slideshow-target="slide">🐵</div>
+    <div data-slideshow-target="slide">🙈</div>
+    <div data-slideshow-target="slide">🙉</div>
+    <div data-slideshow-target="slide">🙊</div>
+  </div>
+  <br><br>Example 4: Inbox messages and loading HTML asynchronously with timer
+  <div data-controller="content-loader" data-content-loader-url-value="/messages.html" data-content-loader-refresh-interval-value="5000"></div>
+  <br><br>Example 5: Using Content Loader Controller on multiple sources
+<!--   <div data-controller="content-loader">
+    <a href="#" data-content-loader-url-param="/messages.html" data-action="content-loader#load">Messages</a>
+    <a href="#" data-controller="content-loader" data-content-loader-url-param="/comments.html" data-action="content-loader#load">Comments</a>
+  </div> -->
   <h1 data-controller="example"></h1>
 </body>
 </html>
